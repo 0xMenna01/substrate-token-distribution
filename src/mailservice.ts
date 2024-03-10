@@ -32,7 +32,7 @@ export class MailService {
     return this.instance
   }
 
-  public sendEmail(textMessage: string) {
+  public async sendEmail(textMessage: string) {
     // Define the email options
     const mailOptions = {
       from: this.params.from,
@@ -42,12 +42,6 @@ export class MailService {
     }
 
     // Send the email
-    this.transporter.sendMail(mailOptions, (error: any, info: any) => {
-      if (error) {
-        console.error('Error sending email:', error)
-      } else {
-        logMessage(`Email sent: ${info.response}`)
-      }
-    })
+    await this.transporter.sendMail(mailOptions)
   }
 }

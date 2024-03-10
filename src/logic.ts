@@ -53,10 +53,9 @@ export class TokenDistributionExecutor {
     if (res) {
       logMessage('SUCCESS')
       const txMessage = `Transaction submitted with hash: ${res}`
-      logMessage(txMessage)
       if (this.manager.config.mailing) {
         // Send email
-        MailService.getInstance(this.manager.config.mailing).sendEmail(
+        await MailService.getInstance(this.manager.config.mailing).sendEmail(
           `${this.manager.config.chainName} token distribution was executed successfully.\n${txMessage}`,
         )
       }
