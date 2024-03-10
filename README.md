@@ -13,7 +13,7 @@ Before running the script, ensure you have configured the `config.json` file wit
 - **amountForFees:** Amount of tokens reserved for transaction fees.
 - **minutesDistributionInterval:** Interval (in minutes) at which token distribution occurs.
 - **walletsWeight:** An object containing wallet addresses and their corresponding weight for token distribution.
-- **mailing:** Configuration for email notifications (optional). If not needed, you can remove this section from `config.json`. This version only supports gmail and requires a proper API configuration (check Google documentation). 
+- **mailing:** Configuration for email notifications (optional). If not needed, you can remove this section from `config.json`. A mailing service is required, since the script executes the mail command.
 
 ### Execution
 

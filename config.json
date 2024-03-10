@@ -4,7 +4,7 @@
     "tokenDecimals": 12,
     "keyType": "sr25519",
     "privateSeed": "",
-    "minimumBalanceThreshold": 100,
+    "minimumBalanceThreshold": 20,
     "amountForFees": 1,
     "walletsWeight": {
         "5FCVhphuxmQqwfNJB7KAzjMzrmY3GcqwQwgHayGuz5fSgYHX": 10,
@@ -12,8 +12,6 @@
         "5CeuMGs3krEwv4cLv37haGusDiJJ3rxgNeMmpaCBepwUH8Le": 80.852002
     },
     "mailing": {
-        "from": "",
-        "password": "",
         "to": ""
     }
 }

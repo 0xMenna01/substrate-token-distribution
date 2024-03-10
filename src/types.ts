@@ -1,6 +1,7 @@
 export type Percentage = number
 export const TOTAL_PERCENTAGE: Percentage = 100
-
+export const MAILING_FILE_PATH = 'resources/mail-content.txt'
+export const MILING_DEST_PATH = 'resources/dest-email.txt'
 export class Perbill {
   public value: bigint
 
@@ -92,7 +93,5 @@ export interface JsonConfig {
 }
 
 export type EmailParams = {
-  from: string
-  password: string
   to: string
 }

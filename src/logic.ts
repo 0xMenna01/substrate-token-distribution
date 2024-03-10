@@ -1,7 +1,14 @@
 import { ApiPromise, Keyring } from '@polkadot/api'
-import { Balance, Perbill, Percentage, WalletDistribution } from './types'
+import {
+  Balance,
+  MAILING_FILE_PATH,
+  MILING_DEST_PATH,
+  Perbill,
+  Percentage,
+  WalletDistribution,
+} from './types'
 import { ApiManager, logMessage } from './config'
-import { MailService } from './mailservice'
+import * as fs from 'fs'
 
 export class TokenDistributionExecutor {
   private manager: ApiManager
@@ -55,10 +62,12 @@ export class TokenDistributionExecutor {
       const txMessage = `Transaction submitted with hash: ${res}`
       logMessage(txMessage)
       if (this.manager.config.mailing) {
-        // Send email
-        await MailService.getInstance(this.manager.config.mailing).sendEmail(
+        // write email to file
+        fs.writeFileSync(
+          MAILING_FILE_PATH,
           `${this.manager.config.chainName} token distribution was executed successfully.\n${txMessage}`,
         )
+        fs.writeFileSync(MILING_DEST_PATH, this.manager.config.mailing.to)
       }
     } else {
       logMessage('Tokens were not distributed because configuration conditions were not met')
