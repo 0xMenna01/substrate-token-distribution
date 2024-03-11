@@ -7,9 +7,9 @@
     "minimumBalanceThreshold": 20,
     "amountForFees": 1,
     "walletsWeight": {
-        "5FCVhphuxmQqwfNJB7KAzjMzrmY3GcqwQwgHayGuz5fSgYHX": 10,
-        "5DwEfWnRGsyhw7Gw2aKJCtxBj1nMaC4UUK7NtZiyjSVAPUGE": 9.147998,
-        "5CeuMGs3krEwv4cLv37haGusDiJJ3rxgNeMmpaCBepwUH8Le": 80.852002
+        "5FCVhphuxmQqwfNJB7KAzjMzrmY3GcqwQwgHayGuz5fSgYHX": 100000000,
+        "5DwEfWnRGsyhw7Gw2aKJCtxBj1nMaC4UUK7NtZiyjSVAPUGE": 91479980,
+        "5CeuMGs3krEwv4cLv37haGusDiJJ3rxgNeMmpaCBepwUH8Le": 808520020
     },
     "mailing": {
         "to": ""

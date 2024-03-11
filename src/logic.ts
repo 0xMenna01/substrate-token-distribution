@@ -1,12 +1,5 @@
 import { ApiPromise, Keyring } from '@polkadot/api'
-import {
-  Balance,
-  MAILING_FILE_PATH,
-  MILING_DEST_PATH,
-  Perbill,
-  Percentage,
-  WalletDistribution,
-} from './types'
+import { Balance, MAILING_FILE_PATH, MILING_DEST_PATH, Perbill, WalletDistribution } from './types'
 import { ApiManager, logMessage } from './config'
 import * as fs from 'fs'
 

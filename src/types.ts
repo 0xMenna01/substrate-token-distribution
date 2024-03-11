@@ -1,28 +1,17 @@
-export type Percentage = number
-export const TOTAL_PERCENTAGE: Percentage = 100
 export const MAILING_FILE_PATH = 'resources/mail-content.txt'
 export const MILING_DEST_PATH = 'resources/dest-email.txt'
+
+export const TOTAL_PERCENTAGE: bigint = BigInt(1000000000)
+
 export class Perbill {
   public value: bigint
 
-  public constructor(percent: Percentage) {
-    // check if percentage can be converted correctly
-    const strPercent = percent.toString()
-    let separatorIndex = strPercent.indexOf('.')
-    if (separatorIndex == -1 && (strPercent.length == 1 || strPercent.length == 2)) {
-      separatorIndex = 0
-    } else if (separatorIndex == 1 || separatorIndex == 2) {
-      const numOfDecimals = strPercent.length - separatorIndex - 1
-      if (numOfDecimals > 7) {
-        console.error('The number of decimals for the percentage can be maximum 7')
-        process.exit(-1)
-      }
-    } else {
-      console.error('Percentage has a bad format')
-      process.exit(-1)
-    }
+  public constructor(perbill: bigint) {
+    this.value = BigInt(perbill)
+  }
 
-    this.value = BigInt(percent * 10000000)
+  public add(perbill: Perbill) {
+    this.value += perbill.value
   }
 
   public toString() {
@@ -88,7 +77,7 @@ export interface JsonConfig {
   privateSeed: string
   minimumBalanceThreshold: number
   amountForFees: number
-  walletsWeight: { [address: string]: Percentage }
+  walletsWeight: { [address: string]: number }
   mailing?: EmailParams
 }
 

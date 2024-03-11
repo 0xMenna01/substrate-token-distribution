@@ -1,15 +1,7 @@
 import { ApiPromise, Keyring, WsProvider } from '@polkadot/api'
 
 import * as fs from 'fs'
-import {
-  Balance,
-  Config,
-  JsonConfig,
-  Perbill,
-  Percentage,
-  TOTAL_PERCENTAGE,
-  WalletDistribution,
-} from './types'
+import { Balance, Config, JsonConfig, Perbill, TOTAL_PERCENTAGE, WalletDistribution } from './types'
 
 export function readConfig(): Config {
   const rawData = fs.readFileSync('config.json')
@@ -18,14 +10,14 @@ export function readConfig(): Config {
 
   const walletWeights = config.walletsWeight
   let walletDist: WalletDistribution[] = []
-  let totalPercentage = 0
+  let totalPercentage: Perbill = new Perbill(BigInt(0))
   for (const address in walletWeights) {
-    const weight = walletWeights[address]
-    walletDist.push({ address: address, perbill: new Perbill(weight) })
-    totalPercentage += weight
+    const weight = new Perbill(BigInt(walletWeights[address]))
+    walletDist.push({ address: address, perbill: weight })
+    totalPercentage.add(weight)
   }
 
-  if (totalPercentage != TOTAL_PERCENTAGE) {
+  if (totalPercentage.value != TOTAL_PERCENTAGE) {
     console.log('Sum of percentages does not reach 100..')
     process.exit(-1)
   }
